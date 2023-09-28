@@ -11,8 +11,11 @@ public class Principal {
         Scanner sc = new Scanner (System.in);
         int op;
 
-        String ma,mo,pa;
-        int ci,cp;
+        String ma;
+        String mo;
+        String pa;
+        int ci;
+        int cp;
 
         FabricaVehiculos fabrica;
         do{
@@ -22,20 +25,31 @@ public class Principal {
                 case 1:
                      fabrica = new FabricaMotos();
 
-                     escribir("Ingrese marca"); ma = sc.nextLine();
-                     escribir("Ingrese modelo"); mo = sc.nextLine();
-                     escribir("Ingrese patente"); pa = sc.nextLine();
-                     escribir("Ingrese cilindrada"); ci = sc.nextInt();
+                     escribir("Ingrese marca");
+                     ma = sc.next();
+                     escribir("Ingrese modelo");
+                     mo = sc.next();
+                     escribir("Ingrese patente");
+                     pa = sc.next();
+                     escribir("Ingrese cilindrada");
+                     ci = sc.nextInt();
                     listaGeneral.add(fabrica.nuevaMoto(ma,mo,pa,ci));
+                    escribir(listaGeneral.get(0).getPatente());
+
                     break;
                 case 2:
                     fabrica = new FabricaAutos();
 
-                    escribir("Ingrese marca"); ma = sc.nextLine();
-                    escribir("Ingrese modelo"); mo = sc.nextLine();
-                    escribir("Ingrese patente"); pa = sc.nextLine();
+                    escribir("Ingrese marca");
+                    ma = sc.next();
+                    escribir("Ingrese modelo");
+                    mo = sc.next();
+                    escribir("Ingrese patente");
+                    pa = sc.next();
                     escribir("Ingrese cantidad de puertas"); cp = sc.nextInt();
-                    listaGeneral.add(fabrica.nuevaMoto(ma,mo,pa,cp));
+                    listaGeneral.add(fabrica.nuevoAuto(ma,mo,pa,cp));
+                    escribir(listaGeneral.get(1).getPatente());
+
                     break;
                 default:
                     break;
@@ -43,9 +57,6 @@ public class Principal {
 
         } while (op<3);
 
-        for (Vehiculo aux : listaGeneral){
-            escribir(aux.getPatente());
-        }
     }
     static void escribir(String texto){
         System.out.println(texto);
